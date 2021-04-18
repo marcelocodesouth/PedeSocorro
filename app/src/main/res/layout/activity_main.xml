@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#959191"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btnPedeSocorro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#D50101"
+        android:text="Socorro"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/txtTelefoneContatoConfianca"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/viewSeuNome"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnCadastrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#0AE113"
+        android:text="Cadastrar"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txtTelefoneContatoConfianca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="65dp"
+        android:ems="10"
+        android:inputType="phone"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/viewTelefoneContatoConfianca"
+        app:layout_constraintTop_toBottomOf="@+id/txtNomeCotatoConfianca" />
+
+    <EditText
+        android:id="@+id/txtNomeCotatoConfianca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="35dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNomeVitima" />
+
+    <TextView
+        android:id="@+id/viewNomeContatoConfianca"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="65dp"
+        android:text="Digite o nome do contato de confiança"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/txtTelefoneContatoConfianca"
+        app:layout_constraintEnd_toStartOf="@+id/txtNomeCotatoConfianca"
+        app:layout_constraintStart_toStartOf="@+id/viewSeuNome"
+        app:layout_constraintTop_toTopOf="@+id/viewSeuNome" />
+
+    <TextView
+        android:id="@+id/viewTelefoneContatoConfianca"
+        android:layout_width="75dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="9dp"
+        android:text="Qual o telefone do contato de confiança: "
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/txtNomeCotatoConfianca"
+        app:layout_constraintStart_toStartOf="@+id/viewSeuNome"
+        app:layout_constraintTop_toBottomOf="@+id/viewNomeContatoConfianca" />
+
+    <TextView
+        android:id="@+id/viewSeuNome"
+        android:layout_width="97dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="8dp"
+        android:text="Digite Seu Nome: "
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/txtNomeVitima"
+        app:layout_constraintTop_toTopOf="@+id/txtNomeVitima" />
+
+    <EditText
+        android:id="@+id/txtNomeVitima"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="231dp"
+        android:layout_marginEnd="33dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
