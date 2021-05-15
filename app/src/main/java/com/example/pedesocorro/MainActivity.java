@@ -9,12 +9,12 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
-
         Button btnCadastrar_Prog = findViewById(R.id.btnCadastrar);
 
         btnCadastrar_Prog.setOnClickListener(new View.OnClickListener() {
