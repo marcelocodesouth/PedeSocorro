@@ -17,6 +17,9 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -35,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Button btnCadastrar_Prog = findViewById(R.id.btnCadastrar);
         Button btnPedirAjuda_Prog = findViewById(R.id.btnHelp);
+        txtCidade = (TextView) findViewById(R.id.txtCidade);
+        txtEstado = (TextView) findViewById(R.id.txtEstado);
+        txtPais = (TextView) findViewById(R.id.txtPais);
 
         btnCadastrar_Prog.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -47,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 solicitarPermissao();
             }
+
         });
     }
 
@@ -98,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         Double latitude = location.getLatitude();
 
         Endereco = buscarEndereco(latitude, longitude);
-        txtCidade.setText("Cidade: "+ Endereco.getLocality());
+        txtCidade.setText("Cidade: "+Endereco.getThoroughfare()+", "+Endereco.getFeatureName()+", "+Endereco.getSubLocality()+", "+Endereco.getSubAdminArea());
         txtEstado.setText("Estado: "+ Endereco.getAdminArea());
         txtPais.setText("Pais: "+ Endereco.getCountryName());
     }

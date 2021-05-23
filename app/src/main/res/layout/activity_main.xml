@@ -9,26 +9,26 @@
 
     <Button
         android:id="@+id/btnHelp"
-        android:layout_width="400dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="1dp"
         android:backgroundTint="#910707"
         android:text="Chamar Ajuda"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btnCadastrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtHand" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPais" />
 
     <Button
         android:id="@+id/btnCadastrar"
-        android:layout_width="400dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="162dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="161dp"
         android:backgroundTint="#2BAF06"
         android:text="Cadastrar"
         android:textColor="@color/black"
@@ -41,9 +41,10 @@
     <ImageView
         android:id="@+id/imgHelp"
         android:layout_width="90dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="172dp"
-        app:layout_constraintBottom_toTopOf="@+id/txtHand"
+        android:layout_height="0dp"
+        android:layout_marginTop="173dp"
+        android:layout_marginBottom="70dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtCidade"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -54,12 +55,46 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="19dp"
-        android:layout_marginBottom="237dp"
+        android:layout_marginTop="49dp"
         android:text="GetHelp"
         android:textColor="@color/white"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnHelp"
         app:layout_constraintStart_toStartOf="@+id/imgHelp"
+        app:layout_constraintTop_toTopOf="@+id/imgHelp" />
+
+    <TextView
+        android:id="@+id/txtCidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Cidade:"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txtEstado"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgHelp" />
+
+    <TextView
+        android:id="@+id/txtEstado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estado: "
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txtPais"
+        app:layout_constraintStart_toStartOf="@+id/txtCidade"
+        app:layout_constraintTop_toBottomOf="@+id/txtCidade" />
+
+    <TextView
+        android:id="@+id/txtPais"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="129dp"
+        android:text="Pais: "
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnHelp"
+        app:layout_constraintStart_toStartOf="@+id/txtEstado"
+        app:layout_constraintTop_toBottomOf="@+id/txtEstado" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
