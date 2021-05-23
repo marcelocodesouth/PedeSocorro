@@ -31,7 +31,7 @@ public class Cadastro extends AppCompatActivity {
                 String contatoConfianca = edtContatoConfianca.getText().toString();
                 String telefoneContatoConfianca = edtTelefoneContatoConfianca.getText().toString();
 
-                txtViewTestProg.setText("O usuário é " + nomeUsuario + "o contato de confiança é " + contatoConfianca + "O telefone é " + telefoneContatoConfianca);
+                txtViewTestProg.setText("O usuário é " + nomeUsuario + " o contato de confiança é " + contatoConfianca + " O telefone é " + telefoneContatoConfianca);
 
             }
         });
