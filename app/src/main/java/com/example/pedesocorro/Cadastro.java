@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ public class Cadastro extends AppCompatActivity {
         edtTelefoneContatoConfianca = findViewById(R.id.inputTel);
         txtViewTestProg = findViewById(R.id.txtViewTeste);
         getSupportActionBar().hide();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Button btnSalvarProg = findViewById(R.id.btnSalvar);
 
         btnSalvarProg.setOnClickListener(new View.OnClickListener() {
