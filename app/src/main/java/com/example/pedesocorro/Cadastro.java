@@ -2,6 +2,7 @@ package com.example.pedesocorro;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -16,6 +17,10 @@ public class Cadastro extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //inicio da API que vai gravar os dados
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("PEDE_SOCORRO_DATA", MODE_PRIVATE);
+        SharedPreferences.Editor edt = pref.edit();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
         edtNomeUsuario = findViewById(R.id.InputNome);
@@ -29,11 +34,25 @@ public class Cadastro extends AppCompatActivity {
         btnSalvarProg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String nomeUsuario = edtNomeUsuario.getText().toString();
                 String contatoConfianca = edtContatoConfianca.getText().toString();
                 String telefoneContatoConfianca = edtTelefoneContatoConfianca.getText().toString();
 
-                txtViewTestProg.setText("O usuário é " + nomeUsuario + " o contato de confiança é " + contatoConfianca + " O telefone é " + telefoneContatoConfianca);
+                //grava dados na API
+                edt.putString("name", nomeUsuario);
+                edt.putString("nomeContatoConfianca", contatoConfianca);
+                edt.putString("numeroTelefoneContatoConfianca", telefoneContatoConfianca);
+
+                // salva os dados gravados na API
+                edt.commit();
+
+                //recupera os dados da API
+                String nomeDB=pref.getString("name", null);
+                String nomeContatoConfiancaDB=pref.getString("nomeContatoConfianca", null);
+                String numeroTelefoneContatoConfiancaDB=pref.getString("numeroTelefoneContatoConfianca", null);
+
+                txtViewTestProg.setText("O usuário é " + nomeDB + " o contato de confiança é " + nomeContatoConfiancaDB + " O telefone é " + numeroTelefoneContatoConfiancaDB);
 
             }
         });

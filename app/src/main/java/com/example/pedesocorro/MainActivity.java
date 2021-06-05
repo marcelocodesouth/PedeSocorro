@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
@@ -108,6 +109,8 @@ public class MainActivity extends AppCompatActivity {
         txtCidade.setText("Cidade: "+Endereco.getThoroughfare()+", "+Endereco.getFeatureName()+", "+Endereco.getSubLocality()+", "+Endereco.getSubAdminArea());
         txtEstado.setText("Estado: "+ Endereco.getAdminArea());
         txtPais.setText("Pais: "+ Endereco.getCountryName());
+
+
     }
 
     public Address buscarEndereco(double latitude, double longitude) throws IOException {
