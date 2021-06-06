@@ -3,6 +3,7 @@ package com.example.pedesocorro;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -42,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         txtCidade = (TextView) findViewById(R.id.txtCidade);
         txtEstado = (TextView) findViewById(R.id.txtEstado);
         txtPais = (TextView) findViewById(R.id.txtPais);
+
+
 
         btnCadastrar_Prog.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -105,10 +108,24 @@ public class MainActivity extends AppCompatActivity {
         Double longitude = location.getLongitude();
         Double latitude = location.getLatitude();
 
+        //inicio da API que vai recuperar os dados gravados
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("PEDE_SOCORRO_DATA", MODE_PRIVATE);
+        SharedPreferences.Editor edt = pref.edit();
+
+        //recupera os dados da API
+        String nomeDB=pref.getString("name", null);
+        String nomeContatoConfiancaDB=pref.getString("nomeContatoConfianca", null);
+        String numeroTelefoneContatoConfiancaDB=pref.getString("numeroTelefoneContatoConfianca", null);
+
         Endereco = buscarEndereco(latitude, longitude);
         txtCidade.setText("Cidade: "+Endereco.getThoroughfare()+", "+Endereco.getFeatureName()+", "+Endereco.getSubLocality()+", "+Endereco.getSubAdminArea());
         txtEstado.setText("Estado: "+ Endereco.getAdminArea());
-        txtPais.setText("Pais: "+ Endereco.getCountryName());
+        txtPais.setText("Pais: "+ Endereco.getCountryName()
+                //teste do retorno dos dados gravados
+                +
+                "  **Nome: " + nomeDB +
+                "Ctt conf: " + nomeContatoConfiancaDB +
+                System.getProperty("line.separator") + "Fone Ctt conf: " + numeroTelefoneContatoConfiancaDB);
 
 
     }
