@@ -52,7 +52,7 @@ public class Cadastro extends AppCompatActivity {
                 String nomeContatoConfiancaDB=pref.getString("nomeContatoConfianca", null);
                 String numeroTelefoneContatoConfiancaDB=pref.getString("numeroTelefoneContatoConfianca", null);
 
-                txtViewTestProg.setText("O usuário é " + nomeDB + " o contato de confiança é " + nomeContatoConfiancaDB + " O telefone é " + numeroTelefoneContatoConfiancaDB);
+                txtViewTestProg.setText("Usuário: " + nomeDB +  "\nContato de confiança: " + nomeContatoConfiancaDB + "\nTelefone do Contato: " + numeroTelefoneContatoConfiancaDB);
 
             }
         });

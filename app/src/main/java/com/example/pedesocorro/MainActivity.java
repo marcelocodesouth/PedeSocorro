@@ -122,10 +122,9 @@ public class MainActivity extends AppCompatActivity {
         txtEstado.setText("Estado: "+ Endereco.getAdminArea());
         txtPais.setText("Pais: "+ Endereco.getCountryName()
                 //teste do retorno dos dados gravados
-                +
-                "  **Nome: " + nomeDB +
-                "Ctt conf: " + nomeContatoConfiancaDB +
-                System.getProperty("line.separator") + "Fone Ctt conf: " + numeroTelefoneContatoConfiancaDB);
+                + "\nNome: " + nomeDB +
+                "\nContato de Confiança: " + nomeContatoConfiancaDB +
+                System.getProperty("line.separator") + "Telefone do Contato: " + numeroTelefoneContatoConfiancaDB);
 
 
     }
