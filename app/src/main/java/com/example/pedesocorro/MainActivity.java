@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -44,10 +45,13 @@ public class MainActivity extends AppCompatActivity {
         txtEstado = (TextView) findViewById(R.id.txtEstado);
         txtPais = (TextView) findViewById(R.id.txtPais);
 
+        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.SEND_SMS}, 100);
+
 
 
         btnCadastrar_Prog.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                solicitarPermissao();
                 Intent intent = new Intent(MainActivity.this, Cadastro.class);
                 startActivity(intent);
             }
@@ -55,11 +59,36 @@ public class MainActivity extends AppCompatActivity {
 
         btnPedirAjuda_Prog.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                solicitarPermissao();
+                //solicitarPermissao();
+                solicitarAjuda();
             }
 
         });
+
+
     }
+
+    private void solicitarAjuda() {
+
+        //inicio da API que vai recuperar os dados gravados
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("PEDE_SOCORRO_DATA", MODE_PRIVATE);
+        SharedPreferences.Editor edt = pref.edit();
+
+        //recupera os dados da API
+        String nomeDB=pref.getString("name", null);
+        String nomeContatoConfiancaDB=pref.getString("nomeContatoConfianca", null);
+        String numeroTelefoneContatoConfiancaDB=pref.getString("numeroTelefoneContatoConfianca", null);
+        String enderecoPerigo = Endereco.getThoroughfare()+", "+Endereco.getFeatureName()+", "+Endereco.getSubLocality()+", "+Endereco.getSubAdminArea();
+        String mensagemTexto = nomeContatoConfiancaDB + "Eu " + nomeDB +  " preciso de ajuda, estou em perigo no endereço " + enderecoPerigo;
+
+        //envio de sms
+
+            SmsManager sm = SmsManager.getDefault();
+            sm.sendTextMessage(numeroTelefoneContatoConfiancaDB, null, mensagemTexto, null, null);
+
+
+    }
+
 
     private void solicitarPermissao() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -78,6 +107,17 @@ public class MainActivity extends AppCompatActivity {
                 }
                 return;
             }
+            //permissao SMS
+            case 100 :
+                if (grantResults.length > 0 && grantResults[0] ==
+                        PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(MainActivity.this, "Permissão Aprovada!",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "Permissão Negada!",
+                            Toast.LENGTH_SHORT).show();
+                }
+                break;
         }
     }
 
@@ -120,11 +160,7 @@ public class MainActivity extends AppCompatActivity {
         Endereco = buscarEndereco(latitude, longitude);
         txtCidade.setText("Cidade: "+Endereco.getThoroughfare()+", "+Endereco.getFeatureName()+", "+Endereco.getSubLocality()+", "+Endereco.getSubAdminArea());
         txtEstado.setText("Estado: "+ Endereco.getAdminArea());
-        txtPais.setText("Pais: "+ Endereco.getCountryName()
-                //teste do retorno dos dados gravados
-                + "\nNome: " + nomeDB +
-                "\nContato de Confiança: " + nomeContatoConfiancaDB +
-                System.getProperty("line.separator") + "Telefone do Contato: " + numeroTelefoneContatoConfiancaDB);
+        txtPais.setText("Pais: "+ Endereco.getCountryName());
 
 
     }
@@ -141,4 +177,8 @@ public class MainActivity extends AppCompatActivity {
             }
         return address;
     }
+
+
+
+
 }
