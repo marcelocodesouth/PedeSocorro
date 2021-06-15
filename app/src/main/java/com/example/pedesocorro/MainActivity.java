@@ -61,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //solicitarPermissao();
                 solicitarAjuda();
+
+
             }
 
         });
@@ -78,14 +80,13 @@ public class MainActivity extends AppCompatActivity {
         String nomeDB=pref.getString("name", null);
         String nomeContatoConfiancaDB=pref.getString("nomeContatoConfianca", null);
         String numeroTelefoneContatoConfiancaDB=pref.getString("numeroTelefoneContatoConfianca", null);
-        String enderecoPerigo = Endereco.getThoroughfare()+", "+Endereco.getFeatureName()+", "+Endereco.getSubLocality()+", "+Endereco.getSubAdminArea();
+        String enderecoPerigo = "Endereço: "+Endereco.getThoroughfare()+", "+Endereco.getFeatureName()+", "+Endereco.getSubLocality()+", "+Endereco.getSubAdminArea();
         String mensagemTexto = nomeContatoConfiancaDB + "Eu " + nomeDB +  " preciso de ajuda, estou em perigo no endereço " + enderecoPerigo;
 
         //envio de sms
 
             SmsManager sm = SmsManager.getDefault();
-            sm.sendTextMessage(numeroTelefoneContatoConfiancaDB, null, mensagemTexto, null, null);
-
+            sm.sendTextMessage(numeroTelefoneContatoConfiancaDB, null, enderecoPerigo, null, null);
 
     }
 
