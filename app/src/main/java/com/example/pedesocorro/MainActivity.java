@@ -74,19 +74,20 @@ public class MainActivity extends AppCompatActivity {
 
         //inicio da API que vai recuperar os dados gravados
         SharedPreferences pref = getApplicationContext().getSharedPreferences("PEDE_SOCORRO_DATA", MODE_PRIVATE);
-        SharedPreferences.Editor edt = pref.edit();
+
 
         //recupera os dados da API
         String nomeDB=pref.getString("name", null);
         String nomeContatoConfiancaDB=pref.getString("nomeContatoConfianca", null);
         String numeroTelefoneContatoConfiancaDB=pref.getString("numeroTelefoneContatoConfianca", null);
-        String enderecoPerigo = "Endereço: "+Endereco.getThoroughfare()+", "+Endereco.getFeatureName()+", "+Endereco.getSubLocality()+", "+Endereco.getSubAdminArea();
-        String mensagemTexto = nomeContatoConfiancaDB + "Eu " + nomeDB +  " preciso de ajuda, estou em perigo no endereço " + enderecoPerigo;
+        String enderecoPerigo = "no endereço "+Endereco.getThoroughfare()+", "+Endereco.getFeatureName()+", "+Endereco.getSubLocality()+", "+Endereco.getSubAdminArea();
+        String mensagemTexto = "oi " + nomeContatoConfiancaDB + " eu " + nomeDB +  " preciso de ajuda, estou em perigo ";
 
         //envio de sms
-
-            SmsManager sm = SmsManager.getDefault();
-            sm.sendTextMessage(numeroTelefoneContatoConfiancaDB, null, enderecoPerigo, null, null);
+        SmsManager sm = SmsManager.getDefault();
+        sm.sendTextMessage(numeroTelefoneContatoConfiancaDB, null, mensagemTexto, null, null);
+        //envio 2 por conta da limitação de caracteres no SMS
+        sm.sendTextMessage(numeroTelefoneContatoConfiancaDB, null, enderecoPerigo, null, null);
 
     }
 
